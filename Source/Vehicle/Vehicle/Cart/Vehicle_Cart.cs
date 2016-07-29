@@ -96,7 +96,7 @@ namespace ToolsForHaul
             Action action_Order;
 
             // do nothing if not of colony
-            if (myPawn.Faction != Faction.OfColony)
+            if (myPawn.Faction != Faction.OfPlayer)
                 yield break;
 
             foreach (FloatMenuOption fmo in base.GetFloatMenuOptions(myPawn))
@@ -111,7 +111,7 @@ namespace ToolsForHaul
                 myPawn.drafter.TakeOrderedJob(jobNew);
             };
 
-            yield return new FloatMenuOption("Deconstruct".Translate(this.LabelBase), action_Order);
+            yield return new FloatMenuOption("Deconstruct".Translate(this.LabelShort), action_Order); // right? Was this.LabelShort
         }
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
@@ -166,9 +166,9 @@ namespace ToolsForHaul
         {
             get
             {
-                if (!mountableComp.IsMounted || !this.SpawnedInWorld)
+                if (!mountableComp.IsMounted || !this.Spawned) // right? Was this.SpawnedInWorld
                     return base.DrawPos;
-                Vector2 drawSize = mountableComp.Driver.drawer.renderer.graphics.nakedGraphic.drawSize;
+                Vector2 drawSize = mountableComp.Driver.Drawer.renderer.graphics.nakedGraphic.drawSize;
                 float factor = (drawSize.x - 1f);
                 factor *= (mountableComp.Driver.Rotation.AsInt % 2 == 1 ? 0.5f : 0.25f);
                 Vector3 offset = new Vector3(0f, 0f, - factor);
@@ -178,14 +178,14 @@ namespace ToolsForHaul
 
         public override void DrawAt(Vector3 drawLoc)
         {
-            if (!this.SpawnedInWorld)
+            if (!this.Spawned)
             {
                 base.DrawAt(drawLoc);
                 return;
             }
 
             //Body and part location
-            handleLoc = drawLoc; handleLoc.y = Altitudes.AltitudeFor(AltitudeLayer.Waist) + 0.01f;
+            handleLoc = drawLoc; handleLoc.y = Altitudes.AltitudeFor(AltitudeLayer.Item) + 0.01f; // this right? Was AltitudeLayer.Waist
             wheelLoc = drawLoc; wheelLoc.y = Altitudes.AltitudeFor(AltitudeLayer.Pawn) + 0.04f;
             bodyLoc = drawLoc; bodyLoc.y = Altitudes.AltitudeFor(AltitudeLayer.Pawn) + 0.03f;
 

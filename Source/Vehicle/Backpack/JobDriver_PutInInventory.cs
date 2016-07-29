@@ -54,14 +54,14 @@ namespace ToolsForHaul
                 {
                     CurJob.targetB = CurJob.targetQueueB.First();
                     CurJob.targetQueueB.RemoveAt(0);
-                    this.FailOnDestroyed(HaulableInd);
+                    this.FailOnDestroyedOrNull(HaulableInd);
                 }
                 else
                     this.EndJobWith(JobCondition.Succeeded);
             };
 
             Toil toilGoToThing = Toils_Goto.GotoThing(HaulableInd, PathEndMode.ClosestTouch)
-                                    .FailOnDespawned(HaulableInd);
+                                    .FailOnDestroyedOrNull(HaulableInd);
 
             ///
             //Toils Start

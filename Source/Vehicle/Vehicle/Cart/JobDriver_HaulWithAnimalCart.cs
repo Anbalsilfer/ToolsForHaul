@@ -56,7 +56,7 @@ namespace ToolsForHaul
             //Set fail conditions
             ///
 
-            this.FailOnDestroyed(CartInd);
+            this.FailOnDestroyedOrNull(CartInd);
             this.FailOn(() => !cart.mountableComp.IsMounted);
             //Note we only fail on forbidden if the target doesn't start that way
             //This helps haul-aside jobs on forbidden items
@@ -93,11 +93,11 @@ namespace ToolsForHaul
                 yield return extractA;
 
                 Toil callAnimalCartForCollect = Toils_Cart.CallAnimalCart(CartInd, HaulableInd)
-                                                                .FailOnDestroyed(HaulableInd);
+                                                                .FailOnDestroyedOrNull(HaulableInd);
                 yield return callAnimalCartForCollect;
 
                 yield return Toils_Goto.GotoThing(HaulableInd, PathEndMode.ClosestTouch)
-                                              .FailOnDestroyed(HaulableInd);
+                                              .FailOnDestroyedOrNull(HaulableInd);
 
                 yield return Toils_Cart.WaitAnimalCart(CartInd, HaulableInd);
 

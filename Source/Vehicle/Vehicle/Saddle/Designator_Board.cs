@@ -33,7 +33,7 @@ namespace ToolsForHaul
             foreach (var thing in thingList)
             {
                 Pawn pawn = thing as Pawn;
-                if (pawn != null && (pawn.Faction == Faction.OfColony && (pawn.RaceProps.mechanoid || pawn.RaceProps.Humanlike)))
+                if (pawn != null && (pawn.Faction == Faction.OfPlayer && (pawn.RaceProps.IsMechanoid || pawn.RaceProps.Humanlike)))
                     return true;
             }
             return new AcceptanceReport(txtCannotBoard.Translate());
@@ -45,7 +45,7 @@ namespace ToolsForHaul
             foreach (var thing in thingList)
             {
                 Pawn pawn = thing as Pawn;
-                if (pawn != null && (pawn.Faction == Faction.OfColony && (pawn.RaceProps.mechanoid || pawn.RaceProps.Humanlike)))
+                if (pawn != null && (pawn.Faction == Faction.OfPlayer && (pawn.RaceProps.IsMechanoid || pawn.RaceProps.Humanlike)))
                 {
                     Pawn crew = pawn;
                     Job jobNew = new Job(DefDatabase<JobDef>.GetNamed("Board"));

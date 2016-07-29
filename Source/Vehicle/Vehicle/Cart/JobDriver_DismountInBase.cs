@@ -51,7 +51,7 @@ namespace ToolsForHaul
             //Set fail conditions
             ///
 
-            this.FailOnDestroyed(CartInd);
+            this.FailOnDestroyedOrNull(CartInd);
             //Note we only fail on forbidden if the target doesn't start that way
             //This helps haul-aside jobs on forbidden items
             if (!TargetThingA.IsForbidden(pawn.Faction))
@@ -80,7 +80,7 @@ namespace ToolsForHaul
 
             //Mount on Target
             yield return Toils_Goto.GotoThing(CartInd, PathEndMode.ClosestTouch)
-                                        .FailOnDespawned(CartInd);
+                                        .FailOnDestroyedOrNull(CartInd);
             yield return Toils_Cart.MountOn(CartInd);
 
             //Dismount

@@ -81,7 +81,7 @@ namespace ToolsForHaul
                 yield return extractA;
 
                 Toil gotoThing = Toils_Goto.GotoThing(HaulableInd, PathEndMode.ClosestTouch)
-                                                    .FailOnDestroyed(HaulableInd);
+                                                    .FailOnDestroyedOrNull(HaulableInd);
                 yield return gotoThing;
 
                 yield return ToolsForHaul.Toils_Collect.CollectInInventory(HaulableInd);

@@ -49,7 +49,7 @@ namespace ToolsForHaul
                 return null;
             Thing lastItem = null;
             int lastItemInd = -1;
-            Thing foodInInventory = FoodUtility.FoodInInventory(pawn);
+            Thing foodInInventory = FoodUtility.BestFoodInInventory(pawn);
             if (pawn.inventory.container.Count > 0)
             {
                 if (backpack.numOfSavedItems > 0)
@@ -75,7 +75,7 @@ namespace ToolsForHaul
             return Driver.RaceProps.Animal && PawnUtility.CasualInterruptibleNow(Driver)
                 && Driver.needs.food.CurCategory < HungerCategory.Starving 
                 && Driver.needs.rest.CurCategory < RestCategory.VeryTired
-                && !Driver.health.ShouldBeTreatedNow;
+                && !Driver.health.ShouldBeTendedNow;
         }
         public static Job HaulWithTools(Pawn pawn, Vehicle_Cart cart = null)
         {

@@ -37,7 +37,7 @@ namespace ToolsForHaul
                 || (this.Faction != null && this.Faction != pawn.Faction)))                        //Not your vehicle
                 return;
 
-            if (pawn.Faction == Faction.OfColony && (pawn.needs.food.CurCategory == HungerCategory.Starving || pawn.needs.rest.CurCategory == RestCategory.Exhausted))
+            if (pawn.Faction == Faction.OfPlayer && (pawn.needs.food.CurCategory == HungerCategory.Starving || pawn.needs.rest.CurCategory == RestCategory.Exhausted))
             {
                 Messages.Message(pawn.LabelCap + "cannot board on " + this.LabelCap + ": " + pawn.LabelCap + "is starving or exhausted", MessageSound.RejectInput);
                 return;
@@ -161,7 +161,7 @@ namespace ToolsForHaul
             {
                 FloatMenuOption fmoBoard = new FloatMenuOption();
 
-                fmoBoard.label = "Ride".Translate(mountableComp.Driver.LabelBase);
+                fmoBoard.Label = "Ride".Translate(mountableComp.Driver.LabelShort);
                 fmoBoard.priority = MenuOptionPriority.High;
                 fmoBoard.action = () =>
                 {
@@ -170,7 +170,7 @@ namespace ToolsForHaul
                 };
                 if (this.storage.Count(x => x is Pawn) >= 1)
                 {
-                    fmoBoard.label = "AlreadyRide".Translate();
+                    fmoBoard.Label = "AlreadyRide".Translate();
                     fmoBoard.Disabled = true;
                 }
 
@@ -222,7 +222,7 @@ namespace ToolsForHaul
         {
             get
             {
-                if (!mountableComp.IsMounted || !this.SpawnedInWorld)
+                if (!mountableComp.IsMounted || !this.Spawned)
                     return base.DrawPos;
                 return mountableComp.Position;
             }
@@ -230,7 +230,7 @@ namespace ToolsForHaul
 
         public override void DrawAt(Vector3 drawLoc)
         {
-            if (!this.SpawnedInWorld)
+            if (!this.Spawned)
             {
                 base.DrawAt(drawLoc);
                 return;

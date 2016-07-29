@@ -33,7 +33,7 @@ namespace ToolsForHaul
             ///
 
             //this.FailOnBurningImmobile(MountCellInd);
-            this.FailOnDestroyed(MountableInd);
+            this.FailOnDestroyedOrNull(MountableInd);
             //Note we only fail on forbidden if the target doesn't start that way
             //This helps haul-aside jobs on forbidden items
             if (!TargetThingA.IsForbidden(pawn.Faction))

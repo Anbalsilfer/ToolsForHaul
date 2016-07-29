@@ -6,7 +6,7 @@
     <category>Item</category>
     <selectable>true</selectable>
     <tickerType>Normal</tickerType>
-    <altitudeLayer>Waist</altitudeLayer>
+    <altitudeLayer>Item</altitudeLayer>
 		<useHitPoints>True</useHitPoints>
     <hasTooltip>true</hasTooltip>
     <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
@@ -38,7 +38,7 @@
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,1)</interactionCellOffset>
     <passability>PassThroughOnly</passability>
-    <altitudeLayer>Waist</altitudeLayer>
+    <altitudeLayer>Item</altitudeLayer>
     <description>A cart is an old-fashioned wooden vehicle that is used for transporting goods or people.</description>
     <thingClass>ToolsForHaul.Vehicle_Cart</thingClass>
     <thingCategories>
@@ -68,9 +68,10 @@
       <workSpeedStat>SmithingSpeed</workSpeedStat>
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
-      <soundWorking>Recipe_Smithing</soundWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
       <recipeUsers>
-        <li>TableSmithing</li>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
       </recipeUsers>
       <workAmount>2400</workAmount>
     <unfinishedThingDef>UnfinishedCart</unfinishedThingDef>
@@ -91,7 +92,7 @@
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,0)</interactionCellOffset>
     <passability>PassThroughOnly</passability>
-    <altitudeLayer>Waist</altitudeLayer>
+    <altitudeLayer>Item</altitudeLayer>
     <description>A saddle is a leather seat that you put on the back of an animal so that you can ride the animal.</description>
     <thingClass>ToolsForHaul.Vehicle_Saddle</thingClass>
     <thingCategories>
@@ -120,9 +121,10 @@
       <workSpeedStat>SmithingSpeed</workSpeedStat>
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
-      <soundWorking>Recipe_Smithing</soundWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
       <recipeUsers>
-        <li>TableSmithing</li>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
       </recipeUsers>
       <workAmount>1600</workAmount>
     <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
@@ -142,7 +144,7 @@
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,1)</interactionCellOffset>
     <passability>PassThroughOnly</passability>
-    <altitudeLayer>Waist</altitudeLayer>
+    <altitudeLayer>Item</altitudeLayer>
     <description>A trolley is a small table on wheels which is used for serving drinks or food.</description>
     <thingClass>ToolsForHaul.Vehicle_Trolley</thingClass>
     <thingCategories>
@@ -177,9 +179,10 @@
       <workSpeedStat>SmithingSpeed</workSpeedStat>
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
-      <soundWorking>Recipe_Smithing</soundWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
       <recipeUsers>
-        <li>TableSmithing</li>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
       </recipeUsers>
       <workAmount>1600</workAmount>
     <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>

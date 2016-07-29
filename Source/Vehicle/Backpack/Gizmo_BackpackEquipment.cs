@@ -97,7 +97,7 @@ namespace ToolsForHaul
                     Widgets.DrawTextureFitted(thingIconRect, FilledTex, 1.0f);
                 }
                 //Interaction with item
-                if (Widgets.InvisibleButton(thingIconRect))
+                if (Widgets.ButtonInvisible(thingIconRect))
                 {
                     thingIconSound = SoundDefOf.Click;
                     if (Event.current.button == 0)
@@ -190,7 +190,7 @@ namespace ToolsForHaul
                             wearer.inventory.container.TryDrop(item, wearer.Position, ThingPlaceMode.Near, out dummy1);
                         }));
 
-                        Find.WindowStack.Add((Window)new FloatMenu(options, item.LabelCap, false, false));
+                        Find.WindowStack.Add((Window)new FloatMenu(options, item.LabelCap, false));
                     }
 
                     SoundStarter.PlayOneShotOnCamera(thingIconSound);

@@ -47,8 +47,8 @@ namespace ToolsForHaul
             //Set fail conditions
             ///
 
-            this.FailOnDestroyed(TargetIndex.A);
-            this.AddEndCondition(() => { return this.Deliveree.health.ShouldBeTreatedNow ? JobCondition.Ongoing : JobCondition.Succeeded; });
+            this.FailOnDestroyedOrNull(TargetIndex.A);
+            this.AddEndCondition(() => { return this.Deliveree.health.ShouldBeTendedNow ? JobCondition.Ongoing : JobCondition.Succeeded; });
             //Note we only fail on forbidden if the target doesn't start that way
             //This helps haul-aside jobs on forbidden items
 
@@ -78,8 +78,8 @@ namespace ToolsForHaul
                 Medicine.holder.TryDrop(Medicine, pawn.Position + IntVec3.North.RotatedBy(pawn.Rotation), ThingPlaceMode.Direct, out dummy);
             };
             yield return toilApplyMedicine;
-
-            yield return Toils_Treat.PickupMedicine(TargetIndex.B, Deliveree);
+            
+            yield return Toils_Tend.PickupMedicine(TargetIndex.B, Deliveree);
 
             Toil toilGoTodeliveree = Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
             yield return toilGoTodeliveree;
@@ -93,7 +93,7 @@ namespace ToolsForHaul
 
             yield return Toils_General.Wait(duration);
 
-            yield return Toils_Treat.FinalizeTreatment(Deliveree);
+            yield return Toils_Tend.FinalizeTend(Deliveree);
 
             yield return Toils_Jump.Jump(toilGoTodeliveree);
         }

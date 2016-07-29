@@ -74,9 +74,9 @@ namespace ToolsForHaul
             base.CompTick();
             if (this.IsMounted)
             {
-                if (driver.Dead || driver.Downed || driver.health.InPainShock || driver.BrokenState != null //Abnormal
-                    || (!driver.RaceProps.Animal && driver.Faction != Faction.OfColony)
-                    || ForbidUtility.IsForbidden(parent, Faction.OfColony))
+                if (driver.Dead || driver.Downed || driver.health.InPainShock || driver.InMentalState  //Abnormal
+                    || (!driver.RaceProps.Animal && driver.Faction != Faction.OfPlayer)
+                    || ForbidUtility.IsForbidden(parent, Faction.OfPlayer))
                     Dismount();
                 else
                 {
@@ -145,7 +145,7 @@ namespace ToolsForHaul
                     myPawn.drafter.TakeOrderedJob(jobNew);
                 };
                 verb = txtMountOn;
-                yield return new FloatMenuOption(verb.Translate(parent.LabelBase), action_Order);
+                yield return new FloatMenuOption(verb.Translate(parent.LabelShort), action_Order);
             }
             else if (this.IsMounted && myPawn == driver)
             {
@@ -154,7 +154,7 @@ namespace ToolsForHaul
                     this.Dismount();
                 };
                 verb = txtDismount;
-                yield return new FloatMenuOption(verb.Translate(parent.LabelBase), action_Order);
+                yield return new FloatMenuOption(verb.Translate(parent.LabelShort), action_Order);
             }
         }
 

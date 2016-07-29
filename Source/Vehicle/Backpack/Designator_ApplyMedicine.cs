@@ -35,7 +35,7 @@ namespace ToolsForHaul
             foreach (var thing in thingList)
             {
                 Pawn pawn = thing as Pawn;
-                if (pawn != null && pawn.health.ShouldBeTreatedNow)
+                if (pawn != null && pawn.health.ShouldBeTendedNow)
                     return true;
             }
             return new AcceptanceReport(txtNoNeedTreatment.Translate());
@@ -47,7 +47,7 @@ namespace ToolsForHaul
             foreach (var thing in thingList)
             {
                 Pawn pawn = thing as Pawn;
-                if (pawn != null && pawn.health.ShouldBeTreatedNow)
+                if (pawn != null && pawn.health.ShouldBeTendedNow)
                 {
                     Job jobNew = new Job(DefDatabase<JobDef>.GetNamed("ApplyMedicine"));
                     jobNew.targetA = pawn;

@@ -200,7 +200,7 @@ public static class Toils_Collect
                 return true;
             return false;
         });
-        toil.FailOnDespawned(CarrierInd);
+        toil.FailOnDestroyedOrNull(CarrierInd);
         return toil;
     }
     #endregion
@@ -351,7 +351,7 @@ public static class Toils_Collect
                     carrier.storage.TryDrop(carrier.storage.First(), adjCell, ThingPlaceMode.Direct, out dummy);
                 }
         };
-        toil.FailOnDespawned(CarrierInd);
+        toil.FailOnDestroyedOrNull(CarrierInd);
         return toil;
     }
 

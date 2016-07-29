@@ -48,7 +48,7 @@ namespace ToolsForHaul
 
             foreach (var thing in thingList)
             {
-                if (thing.def.category == ThingCategory.Item && !Find.Reservations.IsReserved(thing, Faction.OfColony))
+                if (thing.def.category == ThingCategory.Item && !Find.Reservations.IsReserved(thing, Faction.OfPlayer))
                     return true;
             }
             return new AcceptanceReport(txtInvalidPutInTarget.Translate());
@@ -58,7 +58,7 @@ namespace ToolsForHaul
         {
             List<Thing> thingList = c.GetThingList();
             foreach (var thing in thingList)
-                if (thing.def.category == ThingCategory.Item && !Find.Reservations.IsReserved(thing, Faction.OfColony))
+                if (thing.def.category == ThingCategory.Item && !Find.Reservations.IsReserved(thing, Faction.OfPlayer))
                     designations.Add(new Designation(thing, DesignationDefOf.Haul));
         }
 
